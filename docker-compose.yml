@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  app:
+    container_name: slackbot
+    build: .
+    command: bash -c "python3 app.py"
+    volumes:
+      - ./db:/usr/src/app/db
+    env_file:
+      - .env
+    networks:
+      - slackbot-network
+
+networks:
+  slackbot-network:
